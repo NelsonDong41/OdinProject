@@ -1,0 +1,23 @@
+main div {
+  /* for all child and grand-child divs inside main*/
+}
+
+main > div {
+  /* only selectts divs with a class of child */
+}
+
+main > div > div {
+  /* only selectts divs with a class of grand-child */
+}
+
+.group1 + div {
+  /* This rule will only select the div with the class child group2 */
+}
+
+.group1 + div + div {
+  /* This rule will only select the div with the class child group3 */
+}
+
+.group1 ~ div {
+  /* This rule will select all of .group1's siblings - in this case the 2nd and 3rd .child divs*/
+}
