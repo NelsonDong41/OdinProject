@@ -1,0 +1,152 @@
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+
+body {
+    overflow : scroll;
+}
+
+.container {
+    display : grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+
+section.dashboard {
+    background-color: #1992d4;
+    grid-area: 1 / 1/ 3/ 2;
+}
+
+section.dashboard div.elements {
+    display: grid;
+    grid-template-rows: minmax( 1rem, 2rem);
+    align-items: center;
+    gap : 3rem;
+    margin-left: 1rem;
+    color: white;
+}
+
+
+section.dashboard div.elements div {
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+    gap : 0.7rem;
+}
+
+section.dashboard div.elements div.one {
+    zoom : 1.3;
+}
+
+section.dashboard div.elements div *:hover {
+    cursor: pointer;
+}
+
+section.dashboard div.elements div i {
+    place-self : center;
+}
+
+
+
+section.header {
+    grid-area:1 / 2 / 2 / 3;
+    display : grid;
+    gap : 1rem;
+    margin: 1rem;
+}
+
+section.header div.rowone {
+    display : grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 20fr 1fr 2fr 3fr;
+    place-items: center;
+}
+
+section.header div.rowone span.searchbar{
+    width:85%;
+    height: 80%;
+    background-color: #e2e8f0;
+    border-radius: 100px;
+    justify-self: start;
+}
+
+section.header div.rowone img.logo {
+    width: 2rem;    
+    height: 2rem;  
+    border-radius: 100px;
+}
+
+
+section.header div.rowtwo {
+    display : grid;
+    grid-auto-flow: column;
+    align-items: center;
+    grid-template-columns: 4fr 40fr 5fr 5fr 5fr;
+    gap : 1rem;
+}
+
+section.header div.rowtwo img.logo {
+    width: 3rem;    
+    height: 3rem;  
+    border-radius: 100px;
+}
+
+section.header div.rowtwo button{
+    background-color: #1992d4;
+    color: white;
+    border-radius: 100px;
+    padding: 0.3rem;
+    border-color: transparent;
+}
+
+section.body {
+    background-color: #e2e8f0;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: 1rem;
+}
+
+section.body section.projects {
+    grid-row: 1/3;
+    display: grid;
+    grid-template-rows: min-content auto;
+    gap: 0.5rem;
+}
+
+section.body section.projects div.container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+section.body section.projects div.container div.card {
+    border-radius: 10px;
+    padding: 1rem;
+    border-left: 0.3rem solid orange;
+}
+
+p {
+    font-size: 13px;
+}
+
+section.body section.projects .card {
+    background-color: white;
+}
