@@ -27,9 +27,7 @@ body {
 
 .container {
     display : grid;
-    grid-template-columns: 1fr 5fr;
 }
-
 
 section.dashboard {
     background-color: #1992d4;
@@ -76,7 +74,7 @@ section.header {
 section.header div.rowone {
     display : grid;
     grid-auto-flow: column;
-    grid-template-columns: 1fr 20fr 1fr 2fr 3fr;
+    grid-template-columns: 1fr 35fr 1fr 1fr 4fr;
     place-items: center;
 }
 
@@ -128,25 +126,92 @@ section.body {
 section.body section.projects {
     grid-row: 1/3;
     display: grid;
-    grid-template-rows: min-content auto;
+    grid-template-rows: min-content;
     gap: 0.5rem;
 }
 
 section.body section.projects div.container {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* grid-auto-rows: min-content; */
     gap: 1rem;
+
 }
 
 section.body section.projects div.container div.card {
+    border-left: 0.3rem solid orange;
+    background-color: white;
     border-radius: 10px;
     padding: 1rem;
-    border-left: 0.3rem solid orange;
+    box-shadow: 5px 5px 10px lightgray;
 }
 
 p {
     font-size: 13px;
 }
 
-section.body section.projects .card {
+section.body section.announcements .container .card {
+    z-index: 1;
+    margin: 1rem;
+}
+
+section.body section.announcements {
+    gap: 0.5rem;
+    display: grid;
+    margin-left: 1rem;
+}
+
+section.body section.announcements .container {
+    display:grid; 
+    border-radius: 10px;
+    padding: 0.5rem;
     background-color: white;
+    box-shadow: 5px 5px 10px lightgray;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(100px, 1fr) 0 minmax(100px, 1fr) 0 minmax(100px, 1fr);
+}
+
+section.body section.announcements .container span {
+    background-color: lightgrey;
+    height: 1px;
+    width: 90%;
+    place-self: center;
+    z-index: 2;
+}
+
+section.trending {
+    gap: 0.5rem;
+    margin-left: 1rem;
+    margin-top: 3rem;
+    
+}
+
+section.trending div.container {
+    display: grid;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px lightgray;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 5fr;
+    padding: 1rem;
+}
+
+section.trending div.container .card {
+    padding: 0.5rem;
+}
+
+section.trending .container div.icons {
+    display: grid;
+}
+
+section.trending .container div.titles {
+    display: grid;
+}
+
+section.trending .container div.icons img.logo {
+    width: 100%;    
+    border-radius: 100px;
+}
+
+img.logo {
+    place-self: center;
 }
