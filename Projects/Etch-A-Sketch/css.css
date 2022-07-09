@@ -1,0 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+html {
+  height: 100%;
+}
+body {
+  background-color: black;
+  height: 100%;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: stretch;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background: darkgrey;
+  box-shadow: 5px 5px 5px white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.hovering {
+  background: white;
+}
