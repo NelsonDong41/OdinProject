@@ -71,8 +71,6 @@ body {
 
 .player {
   text-align: center;
-  z-index: 1;
-  border-radius: 5%;
   width: calc((25vh + 15vw) * 1.4);
   background-color: transparent;
   backdrop-filter: blur(10px);

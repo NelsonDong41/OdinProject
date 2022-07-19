@@ -1,20 +1,40 @@
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-
-  this.info = () => {
-    let str = `${title} by ${author}, ${pages} pages,`;
-    if (read.toString().toLowerCase() == "no") {
+  info = () => {
+    let str = `${this.title} by ${this.author}, ${this.pages} pages,`;
+    if (this.read.toString().toLowerCase() == "no") {
       str += "not read yet";
     } else {
       str += "read";
     }
     return str;
-  };
+  }
 }
+
+/* Refactored as a Class Above */ 
+
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+
+//   this.info = () => {
+//     let str = `${title} by ${author}, ${pages} pages,`;
+//     if (read.toString().toLowerCase() == "no") {
+//       str += "not read yet";
+//     } else {
+//       str += "read";
+//     }
+//     return str;
+//   };
+// }
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 const theHobbit1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
@@ -81,7 +101,6 @@ function removeCard(e) {
     const indexOfCard = [current.parentNode.children].indexOf(current);
     e.target.parentNode.remove();
     myLibrary.splice(indexOfCard, 1);
-    console.log(myLibrary);
 }
 
 
