@@ -7,6 +7,8 @@ import toml from "./data.toml";
 import yaml from "./data.yaml";
 import json from "./data.json5";
 
+import printMe from './print.js';
+
 console.log(toml.title); // output `TOML Example`
 console.log(toml.owner.name); // output `Tom Preston-Werner`
 
@@ -29,6 +31,12 @@ function component() {
 
   console.log(Data);
   console.log(Notes);
+
+  const btn = document.createElement('button');
+  btn.innerHTML = 'Click me and check the console!';
+  btn.onclick = printMe;
+
+  element.appendChild(btn);
 
   return element;
 }
