@@ -1,7 +1,7 @@
 
 import './stylesheet.css';
 import {component as initSidebar} from './sidebar'
-
+import {component as initHeader} from './header.js'
 const body = document.querySelector('body');
 
 
