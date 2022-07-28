@@ -1,6 +1,7 @@
 import { Project } from "./classes";
 import { importantList, projectList, plus as plusIcon } from "./data";
 import { updateTitle as updateHeaderTitle } from "./header";
+import { determineContent } from "./content";
 import "./sidebar.css";
 
 const sidebar = document.createElement("section");
@@ -96,6 +97,7 @@ function activeProjectListener(div) {
     e.target.classList.add("active");
     currentProject = e.target;
     updateHeaderTitle();
+    determineContent();
   });
 }
 
