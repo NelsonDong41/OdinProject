@@ -5,8 +5,7 @@
   "homepage": "theodinproject.com",
   "author": {
     "name": "Cody Loyd",
-    "email": "codyloyd@gmail.com",
-    "url": "codyloyd.com"
+    "email": "codyloyd@gmail.com"
   },
   "files": [
     "generators"

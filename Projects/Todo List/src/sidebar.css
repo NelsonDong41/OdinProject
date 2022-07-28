@@ -1,0 +1,100 @@
+.active {
+  background-color: var(--header-color);
+  font-weight: bolder;
+  border-left: 1em solid var(--highlight);
+  border-radius: 0.9em;
+}
+
+
+#sidebar {
+  display: grid;
+  grid-auto-flow: row;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  grid-row: 1 / 3;
+  box-sizing: border-box;
+  min-height: 100%;
+  grid-template-rows: 1fr 0.1fr 3fr 0.1fr 5fr 1fr;
+}
+
+#sidebar > div.title {
+  padding-bottom: 0.5em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: 90%;
+}
+
+#sidebar > div.title > h1 {
+    font-size: 2em;
+}
+
+#sidebar > div.container {
+  display: grid;
+  align-content: start;
+  overflow-y: auto;
+  padding: 0.5em;
+  margin: 2em 1em 2em 0em;
+}
+
+#sidebar > div.important {
+  overflow-y: auto;
+  align-content: space-between;
+}
+
+#sidebar > div.container > * {
+  padding: 1em;
+  height: fit-content;
+}
+
+#sidebar > div.container::-webkit-scrollbar {
+  width: 1em;
+  margin-right: 4em;
+}
+
+#sidebar > div.container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+#sidebar > div.container::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+#sidebar > * > div.project:hover {
+  background-color: var(--header-color);
+  font-weight: bolder;
+  border-left: 0.5em solid var(--highlight);
+  border-radius: 0.9em;
+}
+
+#sidebar > span.line {
+  height: 0.1em;
+  background-color: rgb(114, 112, 112);
+  width: 90%;
+  justify-self: center;
+}
+
+#sidebar > span.addButton {
+  display: flex;
+  border: 0.2em solid var(--text-color);
+  border-radius: 1em;
+  width: 90%;
+  height: 4em;
+  justify-self: center;
+  align-self: end;
+  color: var(--highlight);
+  margin: 1em;
+  font-size: 1em;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#sidebar > span.addButton:hover {
+  cursor: pointer;
+  border: solid var(--highlight);
+}

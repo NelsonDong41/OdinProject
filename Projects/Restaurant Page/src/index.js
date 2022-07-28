@@ -4,11 +4,14 @@ import home from "./home";
 import menu from "./menu";
 import contact from "./contact";
 
+document.querySelector("html").style.height = "100%";
+document.querySelector("head").style.height = "100%";
+document.querySelector("body").style.height = "100%";
 const body = document.querySelector("body");
 
 const container = document.createElement("div");
-container.classList.add('container');
-container.setAttribute('id', 'home');
+container.classList.add("container");
+container.setAttribute("id", "home");
 container.appendChild(navbar());
 body.appendChild(container);
 
@@ -34,10 +37,16 @@ function listenForTab(...tabs) {
         case "Home":
           container.appendChild(home());
           container.setAttribute("id", "home");
+          document.querySelector("html").style.height = "100%";
+          document.querySelector("head").style.height = "100%";
+          document.querySelector("body").style.height = "100%";
           break;
         case "Menu":
           container.appendChild(menu());
           container.setAttribute("id", "menu");
+          document.querySelector("html").style.height = "auto";
+          document.querySelector("head").style.height = "auto";
+          document.querySelector("body").style.height = "auto";
           break;
         case "Contact":
           container.appendChild(contact());

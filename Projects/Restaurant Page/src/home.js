@@ -1,6 +1,5 @@
 export default function component() {
     const container = document.createElement('div');
-    container.setAttribute('id', 'home');
     container.classList += 'content';
 
 

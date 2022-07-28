@@ -1,0 +1,20 @@
+:root.dark {
+  --text-color: #dbd8e3;
+  --background-color: #1c1825;
+  --highlight: #ff774e;
+  --header-color: #3d374b;
+}
+
+:root.light {
+  --text-color: #272343;
+  --background-color: #bae8e8;
+  --highlight: #000000;
+  --header-color: #e3f6f5;
+}
+
+:root.light {
+  --text-color: black;
+  --background-color: #dae5d0;
+  --highlight: #fefbe7;
+  --header-color: #a0bcc2;
+}
