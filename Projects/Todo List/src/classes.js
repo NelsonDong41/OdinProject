@@ -1,4 +1,4 @@
-import {formatDistance, subDays} from 'date-fns';
+import {formatDistanceToNow } from 'date-fns';
 
 class Item {
     /**
@@ -26,7 +26,7 @@ class Item {
     }
 
     getTimeLeft() {
-        return formatDistanceToNow(this.dueDate, {addSuffix: true});
+        return formatDistanceToNow(new Date(this.dueDate), {addSuffix: true});
     }
 }
 

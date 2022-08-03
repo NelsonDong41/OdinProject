@@ -2,7 +2,7 @@ import {Item, Project} from './classes';
 import { library, icon } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
-const allTasks = new Project('All Tasks', []);
+const allTasks = new Project('All Tasks', [new Item('task1', 'task1', new Date(1/12/1913), 12, false)]);
 const priority = new Project('Priority', []);
 const time = new Project('Time Based', []);
 

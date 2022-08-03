@@ -1,7 +1,7 @@
 import { Project } from "./classes";
 import { importantList, projectList, plus as plusIcon } from "./data";
 import { updateTitle as updateHeaderTitle } from "./header";
-import { determineContent } from "./content";
+import { displayTasks } from "./content";
 import "./sidebar.css";
 
 const sidebar = document.createElement("section");
@@ -64,7 +64,6 @@ function createImportants() {
   sidebar.appendChild(importantContainer);
 
   currentProject = importantContainer.querySelector('.alltasks');
-  console.log(currentProject);
   currentProject.classList.add('active');
 }
 
@@ -97,7 +96,7 @@ function activeProjectListener(div) {
     e.target.classList.add("active");
     currentProject = e.target;
     updateHeaderTitle();
-    determineContent();
+    displayTasks(e.target.textContent);
   });
 }
 
