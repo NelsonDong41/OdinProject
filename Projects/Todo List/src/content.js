@@ -231,7 +231,7 @@ function createLabels(projectName) {
   const dueDate = document.createElement("div");
   dueDate.textContent = "due";
 
-  if (projectName === "All Tasks") {
+  if (projectName !== "Priority" && projectName !== "Time Based") {
     current.append(complete, title, description, priority, dueDate);
     current.style.gridTemplateColumns = "1fr 1fr 10fr 1fr 5fr";
   } else {
