@@ -1,3 +1,5 @@
+import './stylesheet.css';
+
 function createHamburger() {
   const hamburger = document.createElement('div');
   hamburger.classList.add('hamburger');
@@ -5,6 +7,9 @@ function createHamburger() {
     const line = document.createElement('span');
     hamburger.appendChild(line);
   }
+  hamburger.addEventListener('click', () => {
+    document.querySelector('.tabContainer').classList.toggle('off');
+  });
   return hamburger;
 }
 
@@ -22,23 +27,23 @@ function createTabs(...tabs) {
   return tabContainer;
 }
 
-function build(tabs) {
-  this.container.classList.add('container');
+function build(container, tabs) {
+  container.classList.add('container');
 
   const hamburger = createHamburger();
   const tabContainer = createTabs(...tabs);
 
-  this.container.append(hamburger, tabContainer);
+  container.append(hamburger, tabContainer);
 }
 
-export default class navBar {
+export default class NavBar {
   constructor(...tabs) {
     this.tabs = [...tabs];
     this.container = document.createElement('section');
-    build(tabs);
+    build(this.container, tabs);
   }
 
-  get container() {
+  getContainer() {
     return this.container;
   }
 }
