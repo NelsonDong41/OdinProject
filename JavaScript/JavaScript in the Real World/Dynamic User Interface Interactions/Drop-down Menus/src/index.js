@@ -7,8 +7,9 @@ function createHamburger() {
     const line = document.createElement('span');
     hamburger.appendChild(line);
   }
-  hamburger.addEventListener('click', () => {
-    document.querySelector('.tabContainer').classList.toggle('off');
+  hamburger.addEventListener('click', (e) => {
+    console.log(e.currentTarget.parentNode.childNodes[1]);
+    e.currentTarget.parentNode.childNodes[1].classList.toggle('off');
   });
   return hamburger;
 }
