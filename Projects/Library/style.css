@@ -15,10 +15,11 @@ body {
     display: grid;
     align-content: center;
     box-sizing: border-box;
-    padding: 3em;
     background-image: url(./blackBackground.png);
-    background-size: contain;
+    background-size: cover no-repeat;
     align-content: space-evenly;
+    justify-items: center;
+    align-items: center;
 }
 
 .container {
@@ -28,6 +29,8 @@ body {
     grid-auto-rows: 1fr;
     align-content: center;
     justify-items: center;
+    margin: 2em;
+    width: 90%;
 }
 
 .title {
@@ -52,7 +55,9 @@ body {
     color: white;
 }
  
-
+.card > div:first-child:hover {
+    cursor: pointer;
+}
 
 .card > div:nth-child(2) {
     place-self: center;
@@ -68,4 +73,56 @@ body {
 
 .addDiv:hover {
     cursor: pointer;
+}
+
+
+form {
+    position: absolute;
+    display: grid;
+    grid-auto-rows: 1fr;
+    background-color: transparent;
+    box-shadow: 0px 0px 20px 10px #ffffff;
+    backdrop-filter: blur(20px);
+    width: 50%;
+    height: 50%;
+    box-sizing: border-box;
+    color: white;
+}
+
+form > div {
+    position: relative;
+    border: 1px solid black;
+}
+
+form > div > input {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    position: absolute;
+}
+
+form > div > span {
+    color: red;
+    font-size: 1.5em;
+}
+
+form > div > input::placeholder {
+    text-align: center;
+}
+
+form > div:nth-child(4), form >div:nth-child(5) {
+    text-align: center;
+    font-size: 3em;
+    color: white;
+}
+
+form > #submit {
+    background-color: green;
+}
+
+form > .checked {
+    background-color: green;
 }
