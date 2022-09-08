@@ -41,21 +41,34 @@ async function weatherJSON(searchContent) {
   } else {
     const responseJSON = await response.json();
     console.log(responseJSON);
-    createOverlay(responseJSON);
+    createOverlay(responseJSON, searchContent);
   }
 }
 
-function createOverlay(responseJSON) {
-  const icon = divFactory('div', 'a', responseJSON.weather[0].main);
-  const description = divFactory('div', 'a', responseJSON.weather[0].description);
-  const temp = divFactory('div', 'a', convertToF(responseJSON.main.temp));
-  const max = divFactory('div', 'a', convertToF(responseJSON.main.temp_max));
-  const min = divFactory('div', 'a', convertToF(responseJSON.main.temp_min));
-  const feelsLike = divFactory('div', 'a', convertToF(responseJSON.main.feels_like));
+function createOverlay(responseJSON, searchContent) {
+  const old = body.getElementsByTagName("section")[0];
+  old ? old.remove() : "";
+  const container = document.createElement("section");
+  const icon = divFactory("div", "a", responseJSON.weather[0].main);
+  const location = divFactory("div", "a", searchContent.charAt(0).toUpperCase() + searchContent.toLowerCase().slice(1));
+  const description = divFactory(
+    "div",
+    "a",
+    responseJSON.weather[0].description
+  );
+  const temp = divFactory("div", "a", convertToF(responseJSON.main.temp));
+  const max = divFactory("div", "a", convertToF(responseJSON.main.temp_max));
+  const min = divFactory("div", "a", convertToF(responseJSON.main.temp_min));
+  const feelsLike = divFactory(
+    "div",
+    "a",
+    convertToF(responseJSON.main.feels_like)
+  );
 
-  body.append(icon, description, temp, max, min, feelsLike);
+  container.append(icon, location, description, temp, max, min, feelsLike);
+  body.appendChild(container);
 }
 
 function convertToF(num) {
-  return parseFloat(((((num - 273.15) * 9) / 5) + 32).toFixed(1));
+  return parseFloat((((num - 273.15) * 9) / 5 + 32).toFixed(1));
 }
