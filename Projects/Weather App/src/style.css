@@ -16,8 +16,8 @@ body {
     justify-items: center;
     grid-template-rows: min-content;
     grid-auto-rows: 1fr;
-    background: black;
-    color: white;
+    /* background: black;
+    color: white; */
 }
 
 .searchbar {
@@ -25,6 +25,9 @@ body {
     height: 2em;
     width: 40em;
     text-align: center;
+    box-shadow: 6px 5px 10px 0px rgb(164 164 164),
+    6px 5px 10px 0px rgb(72, 72, 72);
+    border: 0;
 }
 
 .searchbar:focus {
