@@ -1,7 +1,17 @@
-:root {
-  --light: rgb(211, 211, 211);
-  --light-light: rgb(233 233 233);
-  --light-dark: rgb(154 154 154);
+:root.light {
+  --base: rgb(211, 211, 211);
+  --base-light: rgb(233 233 233);
+  --base-dark: rgb(154 154 154);
+  --accent: rgb(114, 39, 255);
+  --opposite: black;
+}
+
+:root.dark {
+  --base: rgb(66, 66, 66);
+  --base-light: rgb(88, 88, 88);
+  --base-dark: rgb(44, 44, 44);
+  --accent: rgb(255, 39, 39);
+  --opposite: white;
 }
 
 * {
@@ -13,7 +23,8 @@ html,
 body {
   width: 100%;
   height: 100%;
-  background-color: var(--light);
+  background-color: var(--base);
+  transition: background 1s ease-in-out;
 }
 
 body {
@@ -23,36 +34,65 @@ body {
   justify-items: center;
   grid-template-rows: min-content;
   grid-auto-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-auto-columns: 0.1fr;
+  padding: 3em;
+  gap: 3em;
+  box-sizing: border-box;
+}
+
+.search {
+  width: 100%;
 }
 
 .searchbar {
+  color: var(--opposite);
   border-radius: 50px;
-  height: 2em;
-  width: 40em;
+  height: 3em;
+  width: 100%;
   text-align: center;
-  background-color: var(--light);
-  box-shadow: -3px -3px 5px 0px var(--light-light),
-    3px 3px 5px 0px var(--light-dark);
+  background-color: var(--base);
+  box-shadow: -3px -3px 5px 0px var(--base-light),
+    3px 3px 5px 0px var(--base-dark);
   border: 0;
-  background: linear-gradient(180deg, var(--light-light), var(--light));
-    margin: 5em;
+  background: linear-gradient(180deg, var(--base-light), var(--base));
 }
 
 .searchbar:hover,
 .searchbar:focus {
   outline: 0;
-  background: linear-gradient(180deg, var(--light), var(--light-light));
+  background: linear-gradient(180deg, var(--base), var(--base-light));
 }
 
 section {
   display: grid;
   justify-items: center;
+  color: var(--opposite);
+  width: 100%;
+  height: 100%;
+  grid-column: 1/3;
+  gap: 2em;
+}
+
+section > div {
+  background-color: var(--base);
+  box-shadow: -3px -3px 5px 0px var(--base-light),
+    3px 3px 5px 0px var(--base-dark);
+  border: 0;
+  background: linear-gradient(180deg, var(--base-light), var(--base));
+  width: 100%;
+  border-radius: 10px;
 }
 
 .container {
   grid-area: 1 / 2 / 2 / 3;
   display: grid;
   grid-auto-flow: column;
-  height: 2em;
-  width: 2em;
+  gap: 20px;
+}
+
+.icon > svg {
+  width: 3em;
+  height: 3em;
+  color: var(--accent);
 }

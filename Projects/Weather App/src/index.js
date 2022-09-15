@@ -11,6 +11,7 @@ const body = document.querySelector("body");
   search.appendChild(searchbar);
   body.append(search);
   createToggles();
+  document.documentElement.className = "dark";
 })();
 
 async function weatherJSON(searchContent) {
@@ -23,7 +24,7 @@ async function weatherJSON(searchContent) {
   } else {
     const responseJSON = await response.json();
     console.log(responseJSON);
-    createContent(responseJSON, searchContent);
+    createContent(responseJSON);
   }
 }
 
@@ -46,36 +47,38 @@ function listenForEnter(searchbar) {
   });
 }
 
-
 function createToggles() {
-  const container = divFactory('div', 'container', "");
+  const container = divFactory("div", "container", "");
   const lightToggle = divFactory("div", "light", "");
-  const lightIcon = divFactory("div", "icon", "");
+  const lightIcon = divFactory("i", "icon", "");
   lightIcon.innerHTML = moon;
   toggler(lightIcon, moon, sun);
-
+  lightToggle.addEventListener('click', () => {
+    const root = document.documentElement;
+    root.className = root.className === "dark" ? "light" : "dark";
+  });
   lightToggle.appendChild(lightIcon);
 
   const unitToggle = divFactory("div", "units", "");
   const unitIcon = divFactory("i", "icon", "");
   unitIcon.innerHTML = C;
-  toggler(unitIcon, F, C);
+  toggler(unitIcon, C, F);
   unitToggle.appendChild(unitIcon);
 
   container.append(lightToggle, unitToggle);
   body.appendChild(container);
 }
 
-function createContent(responseJSON, searchContent) {
+function createContent(responseJSON) {
   const old = body.getElementsByTagName("section")[0];
   old ? old.remove() : "";
   const container = document.createElement("section");
-  const icon = divFactory("div", "a", responseJSON.weather[0].main);
+  const icon = document.createElement('img');
+  icon.setAttribute('src', `http://openweathermap.org/img/wn/${responseJSON.weather[0].icon}@2x.png`);
   const location = divFactory(
     "div",
     "a",
-    searchContent.charAt(0).toUpperCase() + searchContent.toLowerCase().slice(1)
-  );
+    responseJSON.name);
   const description = divFactory(
     "div",
     "a",
@@ -100,9 +103,7 @@ function convertToF(num) {
 
 function toggler(div, off, on) {
   div.addEventListener("click", () => {
-    div.classList.contains("on")
-      ? (div.innerHTML = off)
-      : (div.innerHTML = on);
+    div.classList.contains("on") ? (div.innerHTML = off) : (div.innerHTML = on);
     div.classList.toggle("on");
   });
 }
