@@ -41,16 +41,25 @@ async function weatherJSON(searchContent) {
   } else {
     const responseJSON = await response.json();
     console.log(responseJSON);
-    createOverlay(responseJSON, searchContent);
+    createToggles();
+    createContent(responseJSON, searchContent);
   }
 }
 
-function createOverlay(responseJSON, searchContent) {
+function createToggles() {
+  const lightToggle = divFactory('')
+}
+
+function createContent() {
   const old = body.getElementsByTagName("section")[0];
   old ? old.remove() : "";
   const container = document.createElement("section");
   const icon = divFactory("div", "a", responseJSON.weather[0].main);
-  const location = divFactory("div", "a", searchContent.charAt(0).toUpperCase() + searchContent.toLowerCase().slice(1));
+  const location = divFactory(
+    "div",
+    "a",
+    searchContent.charAt(0).toUpperCase() + searchContent.toLowerCase().slice(1)
+  );
   const description = divFactory(
     "div",
     "a",

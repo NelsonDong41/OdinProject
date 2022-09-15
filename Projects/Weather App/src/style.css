@@ -1,40 +1,50 @@
-* {
-    margin: 0;
-    padding: 0;
+:root {
+  --light: rgb(211, 211, 211);
+  --light-light: rgb(233 233 233);
+  --light-dark: rgb(154 154 154);
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--light);
 }
 
 body {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    justify-items: center;
-    grid-template-rows: min-content;
-    grid-auto-rows: 1fr;
-    /* background: black;
-    color: white; */
+  display: grid;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  grid-template-rows: min-content;
+  grid-auto-rows: 1fr;
 }
 
 .searchbar {
-    border-radius: 50px;
-    height: 2em;
-    width: 40em;
-    text-align: center;
-    box-shadow: 6px 5px 10px 0px rgb(164 164 164),
-    6px 5px 10px 0px rgb(72, 72, 72);
-    border: 0;
+  border-radius: 50px;
+  height: 2em;
+  width: 40em;
+  text-align: center;
+  background-color: var(--light);
+  box-shadow: -3px -3px 5px 0px var(--light-light),
+    3px 3px 5px 0px var(--light-dark);
+  border: 0;
+  background: linear-gradient(180deg, var(--light-light), var(--light));
+    margin: 5em;
 }
 
+.searchbar:hover,
 .searchbar:focus {
-    border: 10px solid yellow;
+  outline: 0;
+  background: linear-gradient(180deg, var(--light), var(--light-light));
 }
 
 section {
-    display: grid;
-    justify-items: center;
+  display: grid;
+  justify-items: center;
 }
