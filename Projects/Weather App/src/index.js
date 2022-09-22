@@ -84,16 +84,28 @@ function createContent(responseJSON) {
     "a",
     responseJSON.weather[0].description
   );
+  const tempContainer = divFactory("div", "dataContainer", "");
   const temp = divFactory("div", "a", convertToF(responseJSON.main.temp));
+  const tempToolTip = divFactory('span', 'b', 'Current Temperature');
+  tempContainer.append(temp, tempToolTip);
+  const maxContainer = divFactory("div", "dataContainer", "");
   const max = divFactory("div", "a", convertToF(responseJSON.main.temp_max));
+  const maxToolTip = divFactory('span', 'b', 'Max Temperature');
+  maxContainer.append(max, maxToolTip);
+  const minContainer = divFactory("div", "dataContainer", "");
   const min = divFactory("div", "a", convertToF(responseJSON.main.temp_min));
+  const minToolTip = divFactory('span', 'b', 'Min Temperature');
+  minContainer.append(min, minToolTip);
+  const feelsLikeContainer = divFactory("div", "dataContainer", "");
   const feelsLike = divFactory(
     "div",
     "a",
     convertToF(responseJSON.main.feels_like)
   );
+  const feelsLikeToolTip = divFactory('span', 'b', 'Feels Like Temperature');
+  feelsLikeContainer.append(feelsLike, feelsLikeToolTip);
 
-  container.append(icon, location, description, temp, max, min, feelsLike);
+  container.append(icon, location, description, tempContainer, maxContainer, minContainer, feelsLikeContainer);
   body.appendChild(container);
 }
 
@@ -107,3 +119,4 @@ function toggler(div, off, on) {
     div.classList.toggle("on");
   });
 }
+
