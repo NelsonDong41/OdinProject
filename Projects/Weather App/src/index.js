@@ -6,9 +6,12 @@ const body = document.querySelector("body");
 (function init() {
   const search = divFactory("header", "search", "");
   const searchbar = divFactory("input", "searchbar", "");
-  searchbar.setAttribute("type", "input", "");
+  searchbar.setAttribute("type", "input");
+  searchbar.setAttribute("name", "searchbar");
   listenForEnter(searchbar);
-  search.appendChild(searchbar);
+  const error = divFactory("label", "searcherror", "");
+  error.setAttribute("name", "searcherror");
+  search.append(searchbar, error);
   body.append(search);
   createToggles();
   document.documentElement.className = "dark";
@@ -20,8 +23,9 @@ async function weatherJSON(searchContent) {
     { mode: "cors" }
   );
   if (response.status == "404") {
-    console.log(response.statusText);
+    document.querySelector(".searcherror").textContent = "Invalid Location";
   } else {
+    document.querySelector(".searcherror").textContent = "";
     const responseJSON = await response.json();
     console.log(responseJSON);
     createContent(responseJSON);
@@ -61,8 +65,25 @@ function createToggles() {
 
   const unitToggle = divFactory("div", "units", "");
   const unitIcon = divFactory("i", "icon", "");
-  unitIcon.innerHTML = C;
-  toggler(unitIcon, C, F);
+  unitIcon.innerHTML = F;
+  toggler(unitIcon, F, C);
+  unitIcon.addEventListener('click', () => {
+    const temp = document.querySelector('.temp');
+    const max = document.querySelector('.max');
+    const min = document.querySelector('.min');
+    const feelsLike = document.querySelector('.feelsLike');
+    if(unitIcon.classList.contains('on')) {
+      temp.textContent = convertToC(temp.textContent);
+      max.textContent = convertToC(max.textContent);
+      min.textContent = convertToC(min.textContent);
+      feelsLike.textContent = convertToC(feelsLike.textContent);
+    } else {
+      temp.textContent = convertToF(temp.textContent);
+      max.textContent = convertToF(max.textContent);
+      min.textContent = convertToF(min.textContent);
+      feelsLike.textContent = convertToF(feelsLike.textContent);
+    }
+  });
   unitToggle.appendChild(unitIcon);
 
   container.append(lightToggle, unitToggle);
@@ -85,32 +106,41 @@ function createContent(responseJSON) {
     responseJSON.weather[0].description
   );
   const tempContainer = divFactory("div", "dataContainer", "");
-  const temp = divFactory("div", "a", convertToF(responseJSON.main.temp));
+  const temp = divFactory("div", "temp", convertFromK(responseJSON.main.temp));
   const tempToolTip = divFactory('span', 'b', 'Current Temperature');
   tempContainer.append(temp, tempToolTip);
   const maxContainer = divFactory("div", "dataContainer", "");
-  const max = divFactory("div", "a", convertToF(responseJSON.main.temp_max));
+  const max = divFactory("div", "max", convertFromK(responseJSON.main.temp_max));
   const maxToolTip = divFactory('span', 'b', 'Max Temperature');
   maxContainer.append(max, maxToolTip);
   const minContainer = divFactory("div", "dataContainer", "");
-  const min = divFactory("div", "a", convertToF(responseJSON.main.temp_min));
+  const min = divFactory("div", "min", convertFromK(responseJSON.main.temp_min));
   const minToolTip = divFactory('span', 'b', 'Min Temperature');
   minContainer.append(min, minToolTip);
   const feelsLikeContainer = divFactory("div", "dataContainer", "");
   const feelsLike = divFactory(
     "div",
-    "a",
-    convertToF(responseJSON.main.feels_like)
+    "feelsLike",
+    convertFromK(responseJSON.main.feels_like)
   );
   const feelsLikeToolTip = divFactory('span', 'b', 'Feels Like Temperature');
   feelsLikeContainer.append(feelsLike, feelsLikeToolTip);
 
   container.append(icon, location, description, tempContainer, maxContainer, minContainer, feelsLikeContainer);
+  container.style.transform = "scale(1)";
   body.appendChild(container);
 }
 
-function convertToF(num) {
+function convertFromK(num) {
   return parseFloat((((num - 273.15) * 9) / 5 + 32).toFixed(1));
+}
+
+function convertToF(num) {
+  return parseFloat((num * 9) / 5 + 32).toFixed(1);
+}
+
+function convertToC(num) {
+  return parseFloat((5 * (num - 32)) / 9).toFixed(1);
 }
 
 function toggler(div, off, on) {
